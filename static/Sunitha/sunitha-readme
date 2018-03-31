@@ -1,0 +1,29 @@
+# GunViolence_Group_Project2
+
+This is the google doc of the initial proposal:
+https://docs.google.com/document/d/1eID_ZIPgNmq40EGlF5Yd8RfJSJqiLcV29Jqr2s2JmY8/edit
+
+"getgeocoding-lat-lon-with-api.ipynb" file used to gather the geolocations form the api
+https://pypi.python.org/pypi/geopy
+
+and
+ 
+Google Maps api:
+https://maps.googleapis.com/maps/api/geocode/json?address=Hawthorne&key=AIzaSyCLE_2Yfxa_y12nZv53kflN0oYnxYDcQVI
+
+How to run the vizualizations:
+
+1) cd $GunViolence_Group_Project2/
+
+   The reason  we use the http.server to run:
+   remember that you’ll need to run a local web server to serve the HTML / CSV
+   you’re just opening the HTML file from your computer directly
+   
+    python -m http.server
+
+  To load the Deaths by county shootings in US
+  go a browser and launch: http://0.0.0.0:8000/circle.html
+ 
+  To load the Mass shootings by county in US
+  go to a browser and launch http://0.0.0.0:8000/Clusters.html
+   
