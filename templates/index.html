@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Belly Button Biodiversity</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+
+    <div class="container top-center">
+            <div class="jumbotron top-center">
+                    <h1 align="center">Mass Shootings in the US</h1>
+                    <h6 align="center">Use the interactive charts below to explore the dataset</h6>
+            </div>
+    </div>
+    <div class="container top-center">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <div class="jumbotron top-center">
+                        <p align="center">SELECT Year</p>
+                    <select id="selDataset" onchange="optionChanged(this.value)" align="center"></select>
+                </div>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8">
+                <table class="table" id="sample_metadata"></table>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="container top-center">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-12">
+                <div id="pie"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-12">
+            <div id="scatter"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
