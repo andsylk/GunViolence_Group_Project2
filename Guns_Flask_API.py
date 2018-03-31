@@ -46,8 +46,8 @@ df
 # In[11]:
 
 # Save the cleaned data to a file called `customers_cleaned.csv`
-new_csv = "clean_gun_data_07_16.csv"
-df.to_csv(new_csv, index=False)
+#new_csv = "clean_gun_data_07_16.csv"
+#df.to_csv(new_csv, index=False)
 
 
 # # Database Creation
@@ -83,7 +83,8 @@ class gunData(Base):
     __tablename__ = 'Mass_Shootings'
 
     id = Column(Integer, primary_key=True)
-    month_code = Column(Text)
+    year = Column(Text)
+    month = Column(Text)
     county = Column(Text)
     county_code = Column(String)
     deaths = Column(String)
@@ -100,7 +101,7 @@ Base.metadata.create_all(engine)
 # In[17]:
 
 # Load the cleaned csv file into a pandas dataframe
-new_df = pd.read_csv(new_csv)
+new_df = pd.read_csv("clean_gun_data_07_16.csv")
 
 
 # In[18]:
