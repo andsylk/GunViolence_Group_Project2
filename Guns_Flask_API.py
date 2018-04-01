@@ -23,6 +23,7 @@ csvfile = "gun_data_07_16.csv"
 df = pd.read_csv(csvfile, dtype=object)
 mortality_df = pd.read_csv("mortalitybystate.csv", dtype=object)
 gundata_df = pd.read_csv('gundata_final.csv', dtype=object)
+total_gun_deaths_df = pd.read_csv("total_gun_deaths.csv", dtype=object)
 # In[7]:
 
 df = df.iloc[:,2:]
@@ -118,6 +119,8 @@ cur = conn.cursor()
 new_df.to_sql('Mass_Shootings',con=engine, index=False, if_exists="replace")
 mortality_df.to_sql('mortalityState', con=engine, index=False, if_exists="replace") 
 gundata_df.to_sql('gunDataFinal', con=engine, index=False, if_exists="replace")
+total_gun_deaths_df.to_sql('totalGunDeaths', con=engine, index=False, if_exists="replace") 
+
 
 # In[20]:
 
@@ -162,6 +165,11 @@ def gunFinal():
 @app.route('/timePeriod')
 def timeSeries(): 
     record = pd.read_sql('''select "Month Code" from Mass_Shootings''', con=engine).to_dict("records")
+    return jsonify(record)
+
+@app.route('/totalGunDeaths')
+def totalGunDeaths(): 
+    record = pd.read_sql('totalGunDeaths', con=engine).to_dict("records")
     return jsonify(record)
 
 if __name__ == '__main__':
