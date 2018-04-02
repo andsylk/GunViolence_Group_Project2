@@ -72,14 +72,8 @@ var projection = d3.geoAlbersUsa()
 // Define path generator
 var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
   .projection(projection); // tell path generator to use albersUsa projection
+  .fitExtent([[20,20],[940,480]], newjson);
 
-var b = path.bounds(state),
-    s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-    t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
-
-projection
-    .scale(s)
-    .translate(t);
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
