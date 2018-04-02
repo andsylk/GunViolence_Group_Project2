@@ -48,8 +48,6 @@ gundata_df['gun_deaths'] = gundata_df['gun_deaths'].astype(float)
 # In[11]:
 
 # Save the cleaned data to a file called `customers_cleaned.csv`
-new_csv = "clean_gun_data_07_16.csv"
-df.to_csv(new_csv, index=False)
 
 
 # # Database Creation
