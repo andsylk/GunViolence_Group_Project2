@@ -2,14 +2,14 @@ var mapboxAccessToken = 'pk.eyJ1IjoiYW5kcmVha3dvbmciLCJhIjoiY2pmZ2ZscDRkMmFzcTJ3
 ;
 
 
-var maxBounds = [
-    [19.8968, 155.5828], //Southwest
-    [60.905296, -73.478260]  //Northeast
-];
+// var maxBounds = [
+//     [19.8968, 155.5828], //Southwest
+//     [60.905296, -73.478260]  //Northeast
+// ];
 
 var map = L.map('map')
     .setView([37.8, -96], 5)
-    .setmaxBounds(maxBounds);
+    // .setmaxBounds(maxBounds);
     
 
 
