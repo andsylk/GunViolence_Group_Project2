@@ -2,7 +2,7 @@
 // Mapbox API
 // https://www.mapbox.com/mapbox-gl-js/style-spec/
 // https://www.mapbox.com/api-documentation/?language=Python#styles
-var mapbox = 'https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2pnMzEwIiwiYSI6ImNpdGRjbWhxdjAwNG0yb3A5b21jOXluZTUifQ.T6YbdDixkOBWH_k9GbS8JQ';
+var mapbox = 'https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3VuaXRoYXJhbWE4MyIsImEiOiJjamZoMG00ODgyZzA2MzFwYWV0N2U3b3QxIn0.r9uUPLSAranlJokBMfOlvw';
 
 // var mapbox = 'https://api.mapbox.com/styles/v1/sunitharama83/cjevowbnp1msr2stnlsfw2e68/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3VuaXRoYXJhbWE4MyIsImEiOiJjamV2b3Iwd3M3MXdjMnJvN2FveXp3d2thIn0.uNhxhAOBzvHmvZqhAlWz5Q'
 

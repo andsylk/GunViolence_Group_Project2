@@ -11,7 +11,7 @@ and
 Google Maps api:
 https://maps.googleapis.com/maps/api/geocode/json?address=Hawthorne&key=AIzaSyCLE_2Yfxa_y12nZv53kflN0oYnxYDcQVI
 
-How to run the vizualizations:
+How to run the visualizations:
 
 1) cd $GunViolence_Group_Project2/
 
@@ -22,8 +22,16 @@ How to run the vizualizations:
     python -m http.server
 
   To load the Deaths by county shootings in US
-  go a browser and launch: http://0.0.0.0:8000/circle.html
+  1.1) go a browser and launch: http://0.0.0.0:8000/circle.html
  
   To load the Mass shootings by county in US
-  go to a browser and launch http://0.0.0.0:8000/Clusters.html
+  1.2) go to a browser and launch http://0.0.0.0:8000/clusters.html
+
+
+  To load deaths by normalized with every 100000K population 
+  1.3) go to a browser and launch http://0.0.0.0:8000/circle-normalize.html 
+
+  To load deaths by total deaths in every county between 2007 and 2016 with average population tooltip.
+  1.4) go to a browser and launch http://0.0.0.0:8000/circle-totaldeaths.html
+
    

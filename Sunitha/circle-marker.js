@@ -16,7 +16,11 @@ L.tileLayer(mapbox).addTo(myMap);
 
 // Define a markerSize function that will give each city a different radius based on its deaths
 function markerSize(deaths) {
-  return deaths * 1000;
+  // return deaths * 1000;
+  // Normalizing gun deaths with population by every 100000 Hundred thousand people
+     normalize = deaths/population * 100000000,
+     console.log(normalize);
+  return normalize;
 }
 
 // loop through the csv data to assign and create a circle marker for each city object
@@ -32,14 +36,22 @@ d3.csv("./Data/gun_data_07-16.csv", function(error, shootingData) {
       lat  = data.latitude;
       lon  = data.longitude;
       county = data.County;
+      population = data.Population;
+      
+      // printing two decimals with the normalized value to display in tooltip
+      // Normalizing the deaths with population of hundred thousand.
+      normalize = markerSize(deaths)
+      //  normalize = deaths/population * 100000;
+      var num2decimal = normalize;
+      num = num2decimal.toFixed(2);
 
       // popup data on the tooltip when clicked on a cluster marker
       var popup = '<b>County: </b>' + county +
-                  '<br/><b>Deaths: </b>'  + deaths +
+                  '<br/><b>Deaths: </b>'  + num +
                   '<br/><b>Month: </b>' +  month;
 
       L.circle([lat ,lon ], {
-        fillOpacity: .45,
+        fillOpacity: .75,
         color: "lightgreen",
         fillColor: "purple", 
         // Setting our circle's radius equal to the output of our markerSize function
