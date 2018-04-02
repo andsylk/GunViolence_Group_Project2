@@ -11,7 +11,12 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+.row {
+  margin-left: 200px;
+  margin-right: 200px;
+  font-family:Georgia;
 
+}
 body {
 	font: 11px sans-serif;
 	background-color: #ffffff;
@@ -38,13 +43,15 @@ body {
 </head>
 <body>
     <div class="jumbotron text-center">
-        <h1 style="font-family:Georgia;"><center>Fequency of mass shootings in the United States<center></h1>
+        <h1 style="font-family:Georgia;"><center>Fequency of Mass Shootings in the United States<center></h1>
     </div>
 
     <div class="row">
       
         <p>This choropleth shows the frequency of mass shootings in the United States by state and whether or not each state has an assault rifle ban. Data of mass shootings from 2007 - 2016 came from the Center Disease Control and Prevention (CDC).  States with higher numbers of mass shootings appear in a darker pink and states with less mass shootings appear in white. States labeled with “Yes” have had an assault rifle ban since 2007. </p>
     </div>
+    <br>
+    <br>
 
 <script type="text/javascript">
 		
@@ -57,12 +64,22 @@ var highColor = '#bc2a66'
 
 // D3 Projection
 var projection = d3.geoAlbersUsa()
-  .translate([width / 2, height / 2]) // translate to center of screen
-  .scale([1000]); // scale things down so see entire US
+  // .translate([width / 2, height / 2]) // translate to center of screen
+  // .scale([1000]); // scale things down so see entire US
+  .scale(1)
+  .translate([0, 0]);
 
 // Define path generator
 var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
   .projection(projection); // tell path generator to use albersUsa projection
+
+var b = path.bounds(state),
+    s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+    t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+
+projection
+    .scale(s)
+    .translate(t);
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
@@ -127,19 +144,19 @@ var queryURL = "http://127.0.0.1:5000/statesdata";
       .style("stroke-width", "1")
       .style("fill", function(d) { return ramp(d.properties.value) });
 
-      svg.selectAll("text")
-  .data(newjson)
-  .enter()
-  .append("svg:text")
-  .text(function(data) { return [data.properties.abbr, data.properties.weaponBan];})
-  .attr("x", function(d){
-      return path.centroid(d)[0];
-  })
-  .attr("y", function(d){
-      return  path.centroid(d)[1];
-  })
-  .attr("text-anchor","middle")
-  .attr('fill', 'black');
+    svg.selectAll("text")
+      .data(newjson)
+      .enter()
+      .append("svg:text")
+      .text(function(data) { return [data.properties.abbr, data.properties.weaponBan];})
+      .attr("x", function(d){
+          return path.centroid(d)[0];
+      })
+      .attr("y", function(d){
+          return  path.centroid(d)[1];
+      })
+      .attr("text-anchor","middle")
+      .attr('fill', 'black');
 
     
 		// add a legend
