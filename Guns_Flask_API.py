@@ -24,6 +24,8 @@ df = pd.read_csv(csvfile, dtype=object)
 mortality_df = pd.read_csv("mortalitybystate.csv", dtype=object)
 gundata_df = pd.read_csv('gundata_final.csv', dtype=object)
 statesdata_df = pd.read_csv('statesdata.csv', dtype=object)
+total_gun_deaths_df = pd.read_csv("total_gun_deaths.csv", dtype=object)
+
 # In[7]:
 
 df = df.iloc[:,2:]
@@ -46,10 +48,6 @@ gundata_df['gun_deaths'] = gundata_df['gun_deaths'].astype(float)
 
 
 # In[11]:
-
-# Save the cleaned data to a file called `customers_cleaned.csv`
-new_csv = "clean_gun_data_07_16.csv"
-df.to_csv(new_csv, index=False)
 
 # # Database Creation
 
@@ -119,6 +117,8 @@ new_df.to_sql('Mass_Shootings',con=engine, index=False, if_exists="replace")
 mortality_df.to_sql('mortalityState', con=engine, index=False, if_exists="replace") 
 gundata_df.to_sql('gunDataFinal', con=engine, index=False, if_exists="replace")
 statesdata_df.to_sql('statesdata', con=engine, index=False, if_exists="replace")
+total_gun_deaths_df.to_sql('totalGunDeaths', con=engine, index=False, if_exists="replace") 
+
 # In[20]:
 
 session.commit()
@@ -172,6 +172,11 @@ def statesData():
 @app.route('/usmap')
 def usMap(): 
     record = pd.read_json('templates/us-states.json').to_dict("records")
+    return jsonify(record)
+
+@app.route('/totalGunDeaths')
+def totalGunDeaths(): 
+    record = pd.read_sql('totalGunDeaths', con=engine).to_dict("records")
     return jsonify(record)
 
 if __name__ == '__main__':
