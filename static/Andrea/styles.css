@@ -1,0 +1,45 @@
+.axis-text {
+  font: sans-serif;
+  font-weight: bold;
+  text-anchor: middle;
+}
+
+.regression {
+  stroke-width: 3px;
+  stroke: #96a3a5;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 160px;
+  height: 40px;
+  padding: 2px;
+  font: 10px sans-serif;
+  background: lightgray;
+  border: 2px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.chart {
+  padding-left: 100px;
+
+}
+
+.text {
+  font: sans-serif;
+}
+
+.jumbotron {
+  background-color: lightgray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.row {
+  margin-left: 200px;
+  margin-right: 200px;
+  font-family:Georgia;
+
+}

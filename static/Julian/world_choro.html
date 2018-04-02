@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+        <link href="d3-geomap/css/d3.geomap.css" rel="stylesheet">
+        <script src="d3-geomap/vendor/d3.geomap.dependencies.min.js"></script>
+        <script src="d3-geomap/js/d3.geomap.min.js"></script>
+    </head>
+    <body style="background-color:#e9ecef">
+        <div>
+            <h1>The U.S. vs the World, at a glance</h1>
+        </div>
+        <div>
+            <h3 id="Title">Estimated Total Number of all Civilian Firearms</h3>
+            <h6>Source: The Guardian: https://www.theguardian.com/news/datablog/2012/jul/22/gun-homicides-ownership-world-list#data ; UNODC and Small arms survey</h6>
+        </div>
+        <div id="map"></div>
+        <div class="row">
+            <div id="buttons">
+                <button type="button" id="tot_rate" class="btn">Estimated Total Number of all Civilian Firearms</button>
+                <button type="button" id="hom_rate" class="btn">Homicide Rate per 100000 People</button>
+                <button type="button" id="avg_fire" class="btn">Average Firearms per 100 People</button>
+                <button type="button" id="rank_own" class="btn">Ranked Rate of Firearm Ownership</button>
+                <button type="button" id="percent" class="btn">Percent of Homicides by Firearm</button>
+                <button type="button" id="number" class="btn">Number of Homicides by Firearm</button>
+            </div>
+        </div>
+        <div style="background-color:#e9ecef">
+            <p style="font-family:Arial, Helvetica, sans-serif">Key Takeaways:</p>
+            <ul style="font-family:Arial, Helvetica, sans-serif">
+                <li>The US has the highest gun ownership rate in the world - an average of 88 per 100 people. That puts it first in the world for gun ownership - and even the number two country, Yemen, has significantly fewer - 54.8 per 100 people
+                <li>But the US does not have the worst firearm murder rate - that prize belongs to Honduras, El Salvador and Jamaica. In fact, the US is number 28, with a rate of 2.97 per 100,000 people</li>
+                <li>Puerto Rico tops the world’s table for firearms murders as a percentage of all homicides - 94.8%. It’s followed by Sierra Leone in Africa and Saint Kitts and Nevis in the Caribbean</li>
+            </ul>
+        </div>
+    </body>
+</html>
+
+<script>
+var format = function(d) {
+    d = d;
+    return d3.format(',.02f')(d);
+}
+
+var map = d3.geomap.choropleth()
+    .geofile('d3-geomap/topojson/world/countries.json')
+    .colors(colorbrewer.YlOrRd[6])
+    .column('total')
+    .format(format)
+    .legend(true)
+    .unitId('ISO_code');
+
+d3.csv('world_data.csv', function(error, data) {
+    d3.select('#map')
+        .datum(data)
+        .call(map.draw, map);
+});
+
+d3.select("#hom_rate")
+.on("click", function(){
+    map.column('homicide_rate_100000').update();
+    d3.select("#title")
+    .text("Homicide Rate per 100,000 people")
+})
+
+
+d3.select("#avg_fire")
+.on("click", function(){
+    map.column('avg_firearm_per_100').update();
+    d3.select("#title")
+    .text("Average Firearms per 100 People")
+})
+
+d3.select("#rank_own")
+.on("click", function(){
+    map.column('rank_rate_ownership').update();
+    d3.select("#title")
+    .text("Ranked Rate of Firearm Ownership")
+})
+
+d3.select("#percent")
+.on("click", function(){
+    map.column('percent_of_homicides_by_firearm').update();
+    d3.select("#title")
+    .text("Percent of Homicides by Firearm")
+})
+
+d3.select("#number")
+.on("click", function(){
+    map.column('number_of_homicides_by_firearm').update();
+    d3.select("#title")
+    .text("Number of Homicides by Firearm")
+})
+
+d3.select("#tot_rate")
+.on("click", function(){
+    map.column('total').update();
+    d3.select("#title")
+    .text("Estimated Total Number of all Civilian Firearms")
+})
+
+</script>
