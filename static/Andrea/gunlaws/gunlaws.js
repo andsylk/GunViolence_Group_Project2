@@ -52,13 +52,15 @@ legend.onAdd = function (map) {
     div.innerHTML = '<div class = "labels"><div class ="min">'+ labels[0] +'</div> \
     <div class="max">' + labels[labels.length - 1] + '</div></div>'
 
-    for (var i = 0; i < colors.length; i++)  {
-        colors.push('<li style="background-color: ' + colors[i] + '"></li>')
-    }
-        div.innerHTML += '<ul>' + colors.join('') + '</ul>'
-        return div
-}
-    legend.addTo(map);
+    labels.forEach(function(index)  {
+        labels.push('<li style="background-color: ' + colors[index] + '"></li>')
+    })
+        
+        div.innerHTML += '<ul>' + labels.join('') + '</ul>'
+    
+    return div
+};
+legend.addTo(map);
 
 
 
