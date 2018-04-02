@@ -171,7 +171,7 @@ def statesData():
 
 @app.route('/usmap')
 def usMap(): 
-    record = pd.read_json('templates/us-states.json').to_dict("records")
+    record = pd.read_json('us-states.json').to_dict("records")
     return jsonify(record)
 
 @app.route('/totalGunDeaths')
