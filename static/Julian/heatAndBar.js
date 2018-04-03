@@ -8,7 +8,7 @@ var darkMapBox = L.tileLayer("https://api.mapbox.com/styles/v1/julianalexander/c
 
 var myMap = L.map("svg-map", {
     center: [37.09, -95.71],
-    zoom: 5,
+    zoom: 4,
     layers: [darkMapBox]
 });
 
