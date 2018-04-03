@@ -65,8 +65,8 @@ d3.csv("gundata_final.csv", function(err, gunData) {
         return +data.gun_deaths * 1;
     });
 
-    xLinearScale.domain([xMin, xMax]);
-    yLinearScale.domain([yMin, yMax]);
+    xLinearScale.domain([0, xMax]);
+    yLinearScale.domain([0, yMax]);
     console.log(xMin);
     console.log(yMax);
 
