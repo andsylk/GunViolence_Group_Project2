@@ -43,7 +43,7 @@ body {
 </head>
 <body>
     <div class="jumbotron text-center">
-        <h1 style="font-family:Georgia;"><center>Fequency of Mass Shootings in the United States<center></h1>
+        <h1 style="font-family:Georgia;"><center>Frequency of Mass Shootings in the United States<center></h1>
     </div>
 
     <div class="row">
@@ -183,7 +183,7 @@ var queryURL = "http://127.0.0.1:5000/statesdata";
 			.attr("width", w - 100)
 			.attr("height", h)
 			.style("fill", "url(#gradient)")
-			.attr("transform", "translate(0,10)");
+			.attr("transform", "translate(0,100)");
 
 		var y = d3.scaleLinear()
 			.range([h, 0])
@@ -193,7 +193,7 @@ var queryURL = "http://127.0.0.1:5000/statesdata";
 
 		key.append("g")
 			.attr("class", "y axis")
-			.attr("transform", "translate(41,10)")
+			.attr("transform", "translate(41,100)")
 			.call(yAxis)
   });
 });
