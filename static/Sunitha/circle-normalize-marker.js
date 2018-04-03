@@ -17,8 +17,9 @@ L.tileLayer(mapbox).addTo(myMap);
 // Define a markerSize function that will give each city a different radius based on its deaths
 function markerSize(deaths) {
   // return deaths * 1000;
-  // Normalizing gun deaths with population by every 100000 Hundred thousand people
-     normalize = deaths/population * 100000,
+  // Normalizing gun deaths with population by every 1000000000 Billion  people, only then I can see the circles on the map.
+  // hundered thousand does not work as the circles are like dots.
+     normalize = deaths/population * 1000000000,
      console.log(normalize);
   return normalize;
 }
@@ -51,9 +52,9 @@ d3.csv("./Data/gun_data_07-16.csv", function(error, shootingData) {
                   '<br/><b>Month: </b>' +  month;
 
       L.circle([lat ,lon ], {
-        fillOpacity: .75,
-        color: "lightgreen",
-        fillColor: "purple", 
+        fillOpacity: .45,
+        color: "purple",
+        fillColor: "lightgreen", 
         // Setting our circle's radius equal to the output of our markerSize function
         // This will make our marker's size proportionate to its deaths 
         radius: markerSize(deaths),
